@@ -52,13 +52,16 @@ function getGenresSet (programs) {
 
 function selectBehavior () {
   const genreSelect = document.getElementById('genres')
+
   genreSelect.addEventListener('change', e => {
     const value = genreSelect.value
 
     if (value === 'todos') {
+      fillNumberOfPrograms(window.info.programas.length)
       fillTableWithPrograms(window.info.programas)
     } else {
       const filtered = window.info.programas.filter(({ generos }) => generos.includes(value))
+      fillNumberOfPrograms(filtered.length)
       fillTableWithPrograms(filtered)
     }
   })
